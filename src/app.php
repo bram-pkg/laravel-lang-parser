@@ -23,4 +23,6 @@ $stmts = $traverser->traverse($stmts);
 
 $printer = new PrettyPrinter();
 
+echo PHP_EOL;
+echo 'Output:' . str_repeat(PHP_EOL, 2);
 echo $printer->prettyPrintFile($stmts) . PHP_EOL;

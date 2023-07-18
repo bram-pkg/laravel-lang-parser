@@ -10,7 +10,15 @@ return [
     'subtitle' => 'My subtitle',
     'body' => 'My body',
     'navigation' => [
-        'home1' => 'Home',
-        'home2' => 'Home',
+        'home' => 'Home',
+
+        'profile' => [
+            'settings' => 'Settings',
+        ]
+    ],
+    'footer' => 'this is a footer',
+    'footer-items' => [
+        'instagram' => 'instagram link',
+        'facebook' => 'facebook link',
     ],
 ];
