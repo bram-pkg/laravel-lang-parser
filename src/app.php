@@ -1,5 +1,6 @@
 <?php
 
+use BlameButton\PhpLangParser\Visitors\TranslateArrayItemVisitor;
 use PhpParser\Node;
 use PhpParser\Node\Expr\Array_;
 use PhpParser\Node\Scalar\String_;
@@ -27,24 +28,17 @@ function translate(string $original): string|null
     ][$original] ?? $original;
 }
 
-$parser = (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
 
 $code = file_get_contents(__DIR__ . '/../lang/en.php');
 
+
+
+// Parse source file
+$parser = (new ParserFactory())->create(ParserFactory::PREFER_PHP7);
 $stmts = $parser->parse($code);
-
+// Traverse the AST using visitors
 $traverser = new NodeTraverser();
-$traverser->addVisitor(new class extends NodeVisitorAbstract {
-    public function enterNode(Node $node): void
-    {
-        if ($node instanceof Node\Expr\ArrayItem) {
-            if ($node->value instanceof String_) {
-                $node->value->value = translate($node->value->value);
-            }
-        }
-    }
-});
-
+$traverser->addVisitor(new TranslateArrayItemVisitor());
 $stmts = $traverser->traverse($stmts);
 
 $printer = new PhpParser\PrettyPrinter\Standard();
