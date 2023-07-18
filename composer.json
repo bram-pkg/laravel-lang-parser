@@ -1,0 +1,25 @@
+{
+    "name": "blamebutton/php-lang-parser",
+    "description": "A lang file parser for Laravel",
+    "type": "project",
+    "require": {
+        "php": "8.1^",
+        "nikic/php-parser": "^4.16"
+    },
+    "autoload": {
+        "psr-4": {
+            "BlameButton\\PhpLangParser\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+
+        }
+    },
+    "authors": [
+        {
+            "name": "Bram Ceulemans",
+            "email": "bram@ceulemans.dev"
+        }
+    ]
+}
