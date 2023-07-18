@@ -18,8 +18,8 @@ class LocalTranslationEngineTest extends TestCase
         $engine = new LocalTranslationEngine();
 
         $this->assertEquals(
-            'Mon titre',
-            $engine->translate('en', 'fr', 'My title')
+            ['Mon titre'],
+            $engine->translate('en', 'fr', ['My title'])
         );
     }
 
@@ -31,9 +31,8 @@ class LocalTranslationEngineTest extends TestCase
         $engine = new LocalTranslationEngine();
 
         $this->assertEquals(
-            'Something that is unmapped',
-            $engine->translate('en', 'fr', 'Something that is unmapped')
+            ['Something that is unmapped'],
+            $engine->translate('en', 'fr', ['Something that is unmapped'])
         );
-
     }
 }
