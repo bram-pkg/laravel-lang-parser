@@ -1,6 +1,9 @@
 # Composer
 /vendor
 
+# PHPUnit
+/.phpunit.cache
+
 # Editor
 .idea
 .vscode
