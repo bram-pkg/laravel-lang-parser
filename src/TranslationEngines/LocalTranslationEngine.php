@@ -19,6 +19,7 @@ class LocalTranslationEngine implements TranslationEngine
             'My subtitle' => 'Mon sous-titre',
             'My body' => 'Mon corps',
             'Home' => 'Chez ons',
+            'Settings' => 'Paramètres',
         ];
 
         return array_map(fn ($string) => $mapping[$string] ?? $string, $content);
