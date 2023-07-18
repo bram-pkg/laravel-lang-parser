@@ -8,10 +8,9 @@ return [
     'title' => 'My title',
     // A good subtitle comment
     'subtitle' => 'My subtitle',
-    /**
-     * Let's do a docblock now
-     *
-     * @see https://php.net
-     */
     'body' => 'My body',
+    'navigation' => [
+        'home1' => 'Home',
+        'home2' => 'Home',
+    ],
 ];

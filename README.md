@@ -8,3 +8,7 @@ This tool parses PHP lang files using [Nikita Popov's PHP parser](https://github
 
 - Add support for DeepL translation engine
 - Add support for nested arrays (Laravel)
+
+## Threads to follow
+
+- https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/issues/5728

@@ -9,15 +9,18 @@ class LocalTranslationEngine implements TranslationEngine
      *
      * @param string $source
      * @param string $target
-     * @param string $content the original string to translate
+     * @param string[] $content the original strings to translate
      * @return string|null the translated string
      */
-    public function translate(string $source, string $target, string $content): string|null
+    public function translate(string $source, string $target, array $content): array
     {
-        return [
+        $mapping = [
             'My title' => 'Mon titre',
             'My subtitle' => 'Mon sous-titre',
             'My body' => 'Mon corps',
-        ][$content] ?? $content;
+            'Home' => 'Chez ons',
+        ];
+
+        return array_map(fn ($string) => $mapping[$string] ?? $string, $content);
     }
 }
