@@ -2,13 +2,14 @@
 
 use BlameButton\PhpLangParser\Printers\PrettyPrinter;
 use BlameButton\PhpLangParser\TranslationEngines\LocalTranslationEngine;
-use BlameButton\PhpLangParser\Visitors\TranslateArrayItemVisitor;
+use BlameButton\PhpLangParser\Visitors\LaravelTranslationFileVisitor;
 use PhpParser\NodeTraverser;
 use PhpParser\ParserFactory;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$code = file_get_contents(__DIR__ . '/../lang/en.php');
+$languageFilePath = __DIR__ . '/../lang/en.php';
+$code = file_get_contents($languageFilePath);
 
 // Parse source file
 $parser = (new ParserFactory())
@@ -18,7 +19,13 @@ $stmts = $parser->parse($code);
 
 // Traverse the AST using visitors
 $traverser = new NodeTraverser();
-$traverser->addVisitor(new TranslateArrayItemVisitor(new LocalTranslationEngine()));
+$traverser->addVisitor(new LaravelTranslationFileVisitor(
+    new LocalTranslationEngine(),
+    str_replace(dirname(__DIR__) . '/lang/', '', realpath($languageFilePath)),
+    [
+        'navigation.profile.settings' => 'Settings but in French',
+    ]
+));
 $stmts = $traverser->traverse($stmts);
 
 $printer = new PrettyPrinter();
